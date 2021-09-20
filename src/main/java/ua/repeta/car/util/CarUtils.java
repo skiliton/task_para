@@ -17,14 +17,14 @@ public final class CarUtils {
     public static List<Car> findByModelAndOlderThanYears(List<Car> cars, String model, int years) {
         return cars.stream()
             .filter(it -> it.getModel().equals(model))
-            .filter(it -> Year.now().minusYears(it.getYear().getValue()).getValue()>years)
+            .filter(it -> Year.now().minusYears(it.getYear().getValue()).getValue() > years)
             .collect(Collectors.toList());
     }
 
     public static List<Car> findByYearAndPriceHigherThanAmount(List<Car> cars, Year year, int amount) {
         return cars.stream()
             .filter(it -> it.getYear().equals(year))
-            .filter(it -> it.getPrice()>amount)
+            .filter(it -> it.getPrice() > amount)
             .collect(Collectors.toList());
     }
 }

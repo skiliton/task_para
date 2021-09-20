@@ -7,11 +7,6 @@ import java.util.List;
 
 import static ua.repeta.car.util.CarUtils.*;
 
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
     private static final List<Car> cars = List.of(
@@ -35,11 +30,11 @@ public class App
             );
 
         System.out.println("\nfindByModelAndOlderThanYears:");
-        findByModelAndOlderThanYears(cars, "X6",1)
+        findByModelAndOlderThanYears(cars, "X6", 1)
             .forEach(System.out::println);
 
         System.out.println("\nfindByYearAndPriceHigherThanAmount:");
-        findByYearAndPriceHigherThanAmount(cars, Year.of(2019),80_000)
+        findByYearAndPriceHigherThanAmount(cars, Year.of(2019), 80_000)
             .forEach(System.out::println);
     }
 }
