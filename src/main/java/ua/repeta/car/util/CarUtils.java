@@ -8,6 +8,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class CarUtils {
+
+    private CarUtils() {
+    }
+
     public static Optional<Car> findByNumberPlate(List<Car> cars, String numberPlate) {
         return cars.stream()
             .filter(it -> it.getNumberPlate().equals(numberPlate))
