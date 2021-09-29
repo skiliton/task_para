@@ -3,32 +3,46 @@ package ua.repeta.car.util;
 import ua.repeta.car.model.Car;
 
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public final class CarUtils {
 
     private CarUtils() {
     }
 
-    public static Optional<Car> findByNumberPlate(List<Car> cars, String numberPlate) {
-        return cars.stream()
-            .filter(it -> it.getNumberPlate().equals(numberPlate))
-            .findFirst();
+    public static Car findByNumberPlate(List<Car> cars, String numberPlate) {
+        for (var car : cars) {
+            if(car.getNumberPlate().equals(numberPlate)){
+                return car;
+            }
+        }
+        return null;
     }
 
     public static List<Car> findByModelAndOlderThanYears(List<Car> cars, String model, int years) {
-        return cars.stream()
-            .filter(it -> it.getModel().equals(model))
-            .filter(it -> Year.now().minusYears(it.getYear().getValue()).getValue() > years)
-            .collect(Collectors.toList());
+        var res = new ArrayList<Car>();
+        for(var car : cars) {
+            if(
+                car.getModel().equals(model) &&
+                Year.now().minusYears(car.getYear().getValue()).getValue() > years
+            ){
+                res.add(car);
+            }
+        }
+        return res;
     }
 
     public static List<Car> findByYearAndPriceHigherThanAmount(List<Car> cars, Year year, int amount) {
-        return cars.stream()
-            .filter(it -> it.getYear().equals(year))
-            .filter(it -> it.getPrice() > amount)
-            .collect(Collectors.toList());
+        var res = new ArrayList<Car>();
+        for(var car : cars) {
+            if(
+                car.getYear().equals(year) &&
+                car.getPrice() > amount
+            ){
+                res.add(car);
+            }
+        }
+        return res;
     }
 }
